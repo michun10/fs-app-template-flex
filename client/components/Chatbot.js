@@ -18,7 +18,7 @@ function Chatbot() {
       m._globals = kommunicateSettings;
     })(document, window.kommunicate || {});
   }, []);
-  return <div>chatbot</div>;
+  return <div></div>;
 }
 
 export default Chatbot;

@@ -1,13 +1,13 @@
 import React from "react";
 import Chatbot from "./components/Chatbot";
 
-import Navbar from "./components/Navbar";
+import NavComp from "./components/NavComp";
 import Routes from "./Routes";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
+      <NavComp />
       <Chatbot />
       <Routes />
     </div>
