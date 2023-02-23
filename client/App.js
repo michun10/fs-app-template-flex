@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <NavComp />
-      <Chatbot />
+      {/* <Chatbot /> */}
       <Routes />
     </div>
   );

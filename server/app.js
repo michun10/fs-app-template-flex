@@ -3,7 +3,6 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 module.exports = app;
-const { WebhookClient } = require("dialogflow-fulfillment");
 
 // logging middleware
 app.use(morgan("dev"));
