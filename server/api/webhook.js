@@ -1,27 +1,19 @@
 const router = require("express").Router();
 const { WebhookClient } = require("dialogflow-fulfillment");
+const { welcome, defaultFallback } = require("./intents/welcomeExit");
 
 router.get("/", (req, res) => {
   res.send("Server is working");
 });
 
-/**
- * on this route dialogflow send the webhook request
- * For the dialogflow we need POST Route.
- * */
-router.post("/", (req, res) => {
-  // get agent from request
-  let agent = new WebhookClient({ request: req, response: res });
-  console.log(agent);
-  // create intentMap for handle intent
+router.post("/", express.json(), (req, res) => {
+  const agent = new WebhookClient({ request: req, response: res });
+  console.log("Dialogflow Request headers: " + JSON.stringify(request.headers));
+  console.log("Dialogflow Request body: " + JSON.stringify(request.body));
   let intentMap = new Map();
-  // add intent map 2nd parameter pass function
-  intentMap.set("webhook-demo", handleWebHookIntent);
-  // now agent is handle request and pass intent map
+  intentMap.set("Default Welcome Intent", welcome);
+  intentMap.set("Default Fallback Intent", defaultFallback);
   agent.handleRequest(intentMap);
 });
-function handleWebHookIntent(agent) {
-  agent.add("Hello I am Webhook demo How are you...");
-}
 
 module.exports = router;
