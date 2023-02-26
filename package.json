@@ -18,8 +18,6 @@
   "dependencies": {
     "@babel/core": "^7.18.13",
     "@babel/preset-react": "^7.18.6",
-    "@google-cloud/dialogflow": "^5.5.1",
-    "actions-on-google": "^3.0.0",
     "axios": "^0.27.2",
     "babel-loader": "^8.2.5",
     "bcrypt": "^5.0.1",
