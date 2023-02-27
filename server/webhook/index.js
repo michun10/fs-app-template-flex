@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { welcome, defaultFallback } = require("../webhook/intents/welcomeExit");
-const { Card, Suggestion } = require("dialogflow-fulfillment");
-const { WebhookClient } = require("dialogflow-fulfillment");
+const { findSite } = require("./intents/findSite");
+const { updateAddress } = require("./intents/updateAddress");
+const { updateEmail } = require("./intents/updateEmail");
 
 const {
   models: { User },
@@ -12,26 +12,23 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  //   console.log(req.headers.authorization);
-  console.log(req.headers);
-  //   const user = await User.findByToken(req.headers.authorization);
-
   const tag = req.body.fulfillmentInfo.tag;
+  const parameters = req.body.sessionInfo.parameters;
 
-  console.log(req.body);
   let jsonResponse;
 
   if (tag === "confirm") {
-    jsonResponse = {
-      sessionInfo: {
-        parameters: {
-          "cancel-period": 2,
-        },
-      },
-    };
+    jsonResponse = await findSite(parameters.zipcode);
   }
 
-  console.log("STARTS HERE", res.json(jsonResponse));
+  if (tag === "updateAddress") {
+    jsonResponse = await updateAddress(parameters.address);
+  }
+
+  if (tag === "updateEmail") {
+    jsonResponse = await updateEmail(parameters.email);
+  }
+
   res.json(jsonResponse);
 });
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Chatbot from "./components/Chatbot";
 import NavComp from "./components/NavComp";
 import Routes from "./Routes";
 
@@ -7,6 +8,7 @@ const App = () => {
     <div>
       <NavComp />
       <Routes />
+      <Chatbot />
     </div>
   );
 };

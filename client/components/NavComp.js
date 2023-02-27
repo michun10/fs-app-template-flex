@@ -11,7 +11,15 @@ const NavComp = ({ handleClick, isLoggedIn }) => (
   <div>
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img
+            src="./142-1428541_health-icon-png-transparent-png.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />
+          Health App
+        </Navbar.Brand>
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         {isLoggedIn ? (
           <div>

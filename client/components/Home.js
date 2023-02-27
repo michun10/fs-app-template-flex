@@ -1,4 +1,5 @@
 import React from "react";
+import Chatbot from "./Chatbot";
 import { connect } from "react-redux";
 
 /**
@@ -7,11 +8,7 @@ import { connect } from "react-redux";
 export const Home = (props) => {
   const { username } = props;
 
-  return (
-    <div>
-      <h3>Welcome, {username}</h3>
-    </div>
-  );
+  return <div></div>;
 };
 
 /**
